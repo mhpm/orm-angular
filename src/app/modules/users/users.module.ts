@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
-
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { UserPageComponent } from './components/user-page/user-page.component';
     UserPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatTableModule
   ],
   exports: [
     UserPageComponent
