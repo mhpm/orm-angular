@@ -43,15 +43,25 @@ const USER_DATA: User[] = [
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrl: './user-list.component.css',
+  styleUrl: './user-list.component.scss',
 })
 export class UserListComponent {
-  displayedColumns: UserKeys[] = [
+  displayedColumns = [
     'id',
     'avatar',
     'first_name',
     'last_name',
     'email',
+    'edit',
+    'delete',
   ];
   dataSource: User[] = USER_DATA;
+
+  deleteUser(element: User) {
+    this.dataSource = this.dataSource.filter((el) => el.id !== element.id);
+  }
+
+  editUser(element: User) {
+    this.dataSource = this.dataSource.filter((el) => el.id !== element.id);
+  }
 }
