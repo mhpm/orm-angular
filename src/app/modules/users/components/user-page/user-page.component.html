@@ -1,2 +1,34 @@
 <h2 class="text-center">USERS PAGE</h2>
-<app-user-list />
+
+<div class="flex justify-center">
+  <div class="w-full lg:w-3/4">
+    <div class="flex justify-end pb-4 w-full">
+      <p-button
+        label="Add User"
+        (onClick)="addUser()"
+        size="small"
+        [rounded]="true"
+      />
+    </div>
+    <app-user-list
+      [dataSource]="dataSource"
+      (onClickEdit)="editUser($event)"
+      (onClickDelete)="deleteUser($event)"
+    />
+  </div>
+</div>
+
+<div class="card flex justify-center">
+  <p-dialog
+    header="Edit Profile"
+    [modal]="true"
+    [(visible)]="isEditFormVisible"
+    [style]="{ width: '25rem' }"
+  >
+    <app-user-edit
+      [user]="selectedUser"
+      (onSave)="updateUser($event)"
+      (onClose)="isEditFormVisible = false"
+    ></app-user-edit>
+  </p-dialog>
+</div>

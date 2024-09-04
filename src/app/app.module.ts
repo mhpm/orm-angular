@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CounterModule } from './modules/counter/counter.module';
 import { UsersModule } from './modules/users/users.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -16,7 +15,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    CounterModule,
     UsersModule
   ],
   providers: [
