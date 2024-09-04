@@ -1,47 +1,59 @@
-<p-table [value]="dataSource">
-  <ng-template pTemplate="header">
-    <tr>
-      <th>ID</th>
-      <th>Avatar</th>
-      <th>Name</th>
-      <th>Last</th>
-      <th>Email</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-user>
-    <tr>
-      <td>{{ user.id }}</td>
-      <td>
-        <p-avatar [image]="user.avatar" styleClass="mr-2" shape="circle" />
-      </td>
-      <td>{{ user.first_name }}</td>
-      <td>{{ user.last_name }}</td>
-      <td>{{ user.email }}</td>
-      <td>
-        <p-button
-          (click)="editUser(user)"
-          label="Edit"
-          severity="secondary"
-          size="small"
-          [text]="true"
-          severity="secondary"
-        />
-      </td>
-      <td>
-        <p-button
-          (click)="deleteUser(user)"
-          label="Delete"
-          severity="danger"
-          size="small"
-          [text]="true"
-          severity="danger"
-        />
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
+<div class="flex justify-center">
+  <div class="w-full lg:w-3/4">
+    <div class="flex justify-end pb-4 w-full">
+      <p-button
+        label="Add User"
+        (onClick)="addUser()"
+        size="small"
+        [rounded]="true"
+      />
+    </div>
+    <p-table [value]="dataSource" styleClass="p-datatable-sm bg-transparent">
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="border-b-2 bg-transparent">ID</th>
+          <th class="border-b-2 bg-transparent">Avatar</th>
+          <th class="border-b-2 bg-transparent">Name</th>
+          <th class="border-b-2 bg-transparent">Last</th>
+          <th class="border-b-2 bg-transparent">Email</th>
+          <th class="border-b-2 bg-transparent"></th>
+          <th class="border-b-2 bg-transparent"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>
+            <p-avatar [image]="user.avatar" styleClass="mr-2" shape="circle" />
+          </td>
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <p-button
+              (click)="editUser(user)"
+              label="Edit"
+              severity="secondary"
+              size="small"
+              [text]="true"
+              severity="secondary"
+            />
+          </td>
+          <td>
+            <p-button
+              (click)="deleteUser(user)"
+              label="Delete"
+              severity="danger"
+              size="small"
+              [text]="true"
+              severity="danger"
+            />
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
 
 <div class="card flex justify-center">
   <p-dialog
@@ -52,7 +64,7 @@
   >
     <app-user-edit
       [user]="selectedUser"
-      (onSave)="onUserSave($event)"
+      (onSave)="updateUser($event)"
       (onClose)="isEditFormVisible = false"
     ></app-user-edit>
   </p-dialog>

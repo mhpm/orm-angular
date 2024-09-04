@@ -11,7 +11,7 @@ import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,10 +28,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     DialogModule,
     InputTextModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     UserPageComponent
+  ],
+  providers: [
+    provideHttpClient(),
   ]
 })
 export class UsersModule { }

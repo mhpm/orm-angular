@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IUser } from '../../types/user.interface';
 
@@ -7,8 +14,14 @@ import { IUser } from '../../types/user.interface';
   templateUrl: './user-edit.component.html',
   styleUrl: './user-edit.component.scss',
 })
-export class UserEditComponent implements OnInit, OnChanges {
-  @Input() user: IUser = { id: '', first_name: '', last_name: '', email: '', avatar: '' };
+export class UserEditComponent implements OnChanges {
+  @Input() user: IUser = {
+    id: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    avatar: '',
+  };
   @Output() onClose = new EventEmitter();
   @Output() onSave = new EventEmitter<IUser>();
   editForm: FormGroup;
@@ -19,14 +32,8 @@ export class UserEditComponent implements OnInit, OnChanges {
       first_name: ['', [Validators.required, Validators.minLength(2)]],
       last_name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      avatar: ['']
+      avatar: [''],
     });
-  }
-
-  ngOnInit(): void {
-    if (this.user) {
-      this.editForm.patchValue(this.user);
-    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -49,7 +56,7 @@ export class UserEditComponent implements OnInit, OnChanges {
       first_name: '',
       last_name: '',
       email: '',
-      avatar: ''
+      avatar: '',
     });
     this.onClose.emit();
   }

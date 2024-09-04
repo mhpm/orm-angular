@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o",
+    "dev": "ng serve -o",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "server": "json-server ./database/index.json",
+    "start": "concurrently \"npm run server\" \"npm run dev\""
   },
   "private": true,
   "dependencies": {
@@ -20,6 +22,7 @@
     "@angular/platform-browser": "^18.1.0",
     "@angular/platform-browser-dynamic": "^18.1.0",
     "@angular/router": "^18.1.0",
+    "json-server": "^1.0.0-beta.2",
     "primeicons": "^7.0.0",
     "primeng": "^17.18.9",
     "rxjs": "~7.8.0",
@@ -31,6 +34,7 @@
     "@angular-devkit/build-angular": "^18.1.3",
     "@angular/cli": "^18.1.3",
     "@angular/compiler-cli": "^18.1.0",
+    "@faker-js/faker": "^9.0.0",
     "@types/jasmine": "~5.1.0",
     "autoprefixer": "^10.4.20",
     "jasmine-core": "~5.1.0",
