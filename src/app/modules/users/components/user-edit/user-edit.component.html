@@ -1,5 +1,87 @@
 <span class="p-text-secondary block mb-5">Update your information.</span>
-<form (ngSubmit)="onSubmit()" #editForm="ngForm">
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="flex flex-col gap-2 mb-5">
+    <label for="first_name">Name</label>
+    <input
+      pInputText
+      id="first_name"
+      formControlName="first_name"
+      aria-describedby="first_name-help"
+    />
+    <div
+      *ngIf="
+        editForm.get('first_name')?.invalid && editForm.get('first_name')?.touched
+      "
+      class="text-red-600"
+    >
+      <small *ngIf="editForm.get('first_name')?.errors?.['required']">
+        Name is required.
+      </small>
+      <small *ngIf="editForm.get('first_name')?.errors?.['minlength']">
+        Name must be at least 2 characters long.
+      </small>
+    </div>
+  </div>
+  <div class="flex flex-col gap-2 mb-5">
+    <label for="last_name">Last Name</label>
+    <input
+      pInputText
+      id="last_name"
+      formControlName="last_name"
+      aria-describedby="last_name-help"
+    />
+    <div
+      *ngIf="
+        editForm.get('lastName')?.invalid && editForm.get('lastName')?.touched
+      "
+      class="text-red-600"
+    >
+      <small *ngIf="editForm.get('lastName')?.errors?.['required']"
+        >Last Name is required.</small
+      >
+      <small *ngIf="editForm.get('lastName')?.errors?.['minlength']">
+        Last Name must be at least 2 characters long.
+      </small>
+    </div>
+  </div>
+  <div class="flex flex-col gap-2 mb-5">
+    <label for="email">E-mail:</label>
+    <input
+      type="email"
+      pInputText
+      id="email"
+      formControlName="email"
+      aria-describedby="email-help"
+    />
+    <div
+      *ngIf="editForm.get('email')?.invalid && editForm.get('email')?.touched"
+      class="text-red-600"
+    >
+      <small *ngIf="editForm.get('email')?.errors?.['required']">
+        E-mail is required.
+      </small>
+      <small *ngIf="editForm.get('email')?.errors?.['email']">
+        Please enter a valid email address.
+      </small>
+    </div>
+  </div>
+  <div class="flex justify-end gap-2 mt-4">
+    <p-button
+      label="Cancel"
+      severity="secondary"
+      (onClick)="onCancel()"
+      size="small"
+    ></p-button>
+    <p-button
+      label="Save"
+      type="submit"
+      [disabled]="editForm.invalid"
+      size="small"
+    ></p-button>
+  </div>
+</form>
+
+<!-- <form (ngSubmit)="onSubmit()" #editForm="ngForm">
   <div class="flex flex-col gap-2 mb-5">
     <label for="first_name">Name</label>
     <input
@@ -74,4 +156,4 @@
       size="small"
     ></p-button>
   </div>
-</form>
+</form> -->
