@@ -1,15 +1,7 @@
 import { Component } from '@angular/core';
-export interface User {
-  id: number | string;
-  last_name: string;
-  first_name: string;
-  email: string;
-  avatar: string;
-}
+import { IUser } from '../../types/user.interface';
 
-type UserKeys = keyof User;
-
-const USER_DATA: User[] = [
+const USER_DATA: IUser[] = [
   {
     id: 'a04b',
     first_name: 'Royce',
@@ -55,13 +47,23 @@ export class UserListComponent {
     'edit',
     'delete',
   ];
-  dataSource: User[] = USER_DATA;
+  dataSource: IUser[] = USER_DATA;
+  isEditFormVisible: boolean = false;
+  selectedUser: IUser = { id: '', first_name: '', last_name: '', email: '' };
 
-  deleteUser(element: User) {
+  deleteUser(element: IUser) {
     this.dataSource = this.dataSource.filter((el) => el.id !== element.id);
   }
 
-  editUser(element: User) {
-    this.dataSource = this.dataSource.filter((el) => el.id !== element.id);
+  editUser(user: IUser) {
+    this.isEditFormVisible = true;
+    this.selectedUser = {...user};
+  }
+
+  onUserSave(updatedUser: IUser) {
+    console.log('updatedUser: ', updatedUser);
+    this.dataSource = this.dataSource.map((user) =>
+      user.id === updatedUser.id ? { ...updatedUser } : user
+    );
   }
 }

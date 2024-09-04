@@ -7,6 +7,10 @@ import { AvatarModule } from 'primeng/avatar';
 import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,6 +25,10 @@ import { TableModule } from 'primeng/table';
     BadgeModule,
     ButtonModule,
     TableModule,
+    DialogModule,
+    InputTextModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     UserPageComponent
