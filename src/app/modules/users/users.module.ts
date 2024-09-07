@@ -12,6 +12,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { provideHttpClient } from '@angular/common/http';
     InputTextModule,
     FormsModule,
     ReactiveFormsModule,
+    ProgressBarModule,
+    MessagesModule
   ],
   exports: [
     UserPageComponent

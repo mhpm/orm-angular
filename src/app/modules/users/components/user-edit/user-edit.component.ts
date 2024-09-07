@@ -1,6 +1,7 @@
 import {
   Component,
   EventEmitter,
+  inject,
   Input,
   OnChanges,
   Output,
@@ -8,6 +9,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IUser } from '../../types/user.interface';
+import { UserService } from '../../users.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -23,8 +25,10 @@ export class UserEditComponent implements OnChanges {
     avatar: '',
   };
   @Output() onClose = new EventEmitter();
-  @Output() onSave = new EventEmitter<IUser>();
+  @Output() onSave = new EventEmitter();
   editForm: FormGroup;
+
+  userService = inject(UserService);
 
   constructor(private fb: FormBuilder) {
     this.editForm = this.fb.group({
@@ -37,7 +41,6 @@ export class UserEditComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // If the dialog is opened with a user, populate the form
     if (changes['user'] && changes['user'].currentValue) {
       this.editForm.patchValue(this.user);
     }
@@ -45,9 +48,16 @@ export class UserEditComponent implements OnChanges {
 
   onSubmit() {
     if (this.editForm.valid) {
-      this.onSave.emit(this.editForm.value);
-      this.onClose.emit();
+      this.updateUser();
     }
+  }
+
+  updateUser() {
+    const updateUser: Partial<IUser> = { ...this.editForm.value };
+    this.userService.updateUser(updateUser).subscribe({
+      next: (updated) => this.onSave.emit(),
+      error: (err) => console.error('Error updating user:', err),
+    });
   }
 
   onCancel() {

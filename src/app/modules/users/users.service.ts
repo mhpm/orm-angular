@@ -1,51 +1,65 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { IUser } from './types/user.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000/users'; // Base URL for the API
+  private apiUrl = 'http://localhost:3000/users';
   private http = inject(HttpClient);
+
+  loading: WritableSignal<boolean> = signal(false);
+  errorMessage: WritableSignal<string> = signal('');
 
   // Fetch all users
   fetchUsers(): Observable<IUser[]> {
-    return this.http
-      .get<IUser[]>(this.apiUrl).pipe(
-      map((response: IUser[]) => response),
-      catchError(this.handleError)
+    this.setLoading(true);
+    return this.http.get<IUser[]>(this.apiUrl).pipe(
+      tap(() => this.setLoading(false)),
+      catchError((error) => this.handleError(error))
     );
   }
 
   // Create a new user
   createUser(user: IUser): Observable<IUser> {
-    return this.http
-      .post<IUser>(this.apiUrl, user)
-      .pipe(catchError(this.handleError));
+    this.setLoading(true);
+    return this.http.post<IUser>(this.apiUrl, user).pipe(
+      tap(() => this.setLoading(false)),
+      catchError((error) => this.handleError(error))
+    );
   }
 
   // Update an existing user
-  updateUser(id: number | string, user: Partial<IUser>): Observable<IUser> {
-    return this.http
-      .put<IUser>(`${this.apiUrl}/${id}`, user)
-      .pipe(catchError(this.handleError));
+  updateUser(user: Partial<IUser>): Observable<IUser> {
+    this.setLoading(true);
+    return this.http.put<IUser>(`${this.apiUrl}/${user.id}`, user).pipe(
+      tap(() => this.setLoading(false)),
+      catchError((error) => this.handleError(error))
+    );
   }
 
   // Delete a user by ID
-  deleteUser(id: number | string): Observable<void> {
-    return this.http
-      .delete<void>(`${this.apiUrl}/${id}`)
-      .pipe(catchError(this.handleError));
+  deleteUser(user: IUser): Observable<void> {
+    this.setLoading(true);
+    return this.http.delete<void>(`${this.apiUrl}/${user.id}`).pipe(
+      tap(() => this.setLoading(false)),
+      catchError((error) => this.handleError(error))
+    );
+  }
+
+  // Method to set the loading state
+  private setLoading(isLoading: boolean) {
+    this.loading.set(isLoading);
   }
 
   // Error handling method
   private handleError(error: HttpErrorResponse) {
-    console.error('Error with HTTP request:', error);
-    return throwError(
-      () => new Error('An error occurred. Please try again later.')
-    );
+    console.error('Error:', error);
+    this.setLoading(false);
+    this.errorMessage.set('An error occurred. Please try again later.');
+    return throwError(() => new Error('An error occurred.'));
   }
 }

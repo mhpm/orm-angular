@@ -6,7 +6,7 @@ import { faker } from '@faker-js/faker';
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
-  styleUrl: './user-page.component.scss'
+  styleUrl: './user-page.component.scss',
 })
 export class UserPageComponent {
   displayedColumns = [
@@ -29,8 +29,9 @@ export class UserPageComponent {
   }
 
   loadUsers() {
+    this.isEditFormVisible = false;
     this.userService.fetchUsers().subscribe({
-      next: (users) => this.dataSource = users,
+      next: (users) => (this.dataSource = users),
       error: (err) => console.error('Error fetching users:', err),
     });
   }
@@ -45,28 +46,15 @@ export class UserPageComponent {
 
     this.userService.createUser(newUser).subscribe({
       next: (user) => {
-        console.log('User created:', user);
         this.loadUsers();
       },
       error: (err) => console.error('Error creating user:', err),
     });
   }
 
-  updateUser(user: IUser) {
-    const updatedUser: Partial<IUser> = { ...user };
-    this.userService.updateUser(user.id!, updatedUser).subscribe({
-      next: (updated) => {
-        console.log('User updated:', updated);
-        this.loadUsers();
-      },
-      error: (err) => console.error('Error updating user:', err),
-    });
-  }
-
   deleteUser(user: IUser) {
-    this.userService.deleteUser(user.id!).subscribe({
+    this.userService.deleteUser(user).subscribe({
       next: () => {
-        console.log('User deleted');
         this.loadUsers();
       },
       error: (err) => console.error('Error deleting user:', err),

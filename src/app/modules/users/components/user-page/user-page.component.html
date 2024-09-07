@@ -27,7 +27,7 @@
   >
     <app-user-edit
       [user]="selectedUser"
-      (onSave)="updateUser($event)"
+      (onSave)="loadUsers()"
       (onClose)="isEditFormVisible = false"
     ></app-user-edit>
   </p-dialog>
