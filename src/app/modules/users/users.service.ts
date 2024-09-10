@@ -1,5 +1,5 @@
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { IUser } from './types/user.interface';
@@ -8,8 +8,12 @@ import { IUser } from './types/user.interface';
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000/users';
+  // private apiUrl = 'http://127.0.0.1:5001/users'; // python api
+  private apiUrl = 'http://localhost:3000/users'; // json-serve api
+  // private apiUrl = "https://python-alpha-pearl.vercel.app/users"; //vercel python
+  private accessToken = 'ujIpH36WR3nUafmhWqu9Vc07';
   private http = inject(HttpClient);
+
 
   loading: WritableSignal<boolean> = signal(false);
   errorMessage: WritableSignal<string> = signal('');
