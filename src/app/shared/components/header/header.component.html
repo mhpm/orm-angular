@@ -81,7 +81,7 @@
       </svg>
     </ng-template> -->
     <ng-template pTemplate="item" let-item let-root="root">
-      <a pRipple class="flex align-items-center p-menuitem-link">
+      <a pRipple class="flex items-center p-menuitem-link">
         <span [class]="item.icon"></span>
         <span class="ml-2">{{ item.label }}</span>
         <p-badge
@@ -105,11 +105,22 @@
     </ng-template>
     <ng-template pTemplate="end">
       <div class="flex items-center gap-2 justify-center">
-        <div>Welcome: User</div>
-        <p-avatar
-          image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-          shape="circle"
-        />
+        @if(user){
+          <strong>Welcome:</strong><span>{{user.first_name}} {{user.last_name}}</span>
+          <p-avatar
+            [image]="user.avatar"
+            shape="circle"
+          />
+        } @else {
+          <p-button
+            severity="secondary"
+            label="Login"
+            size="small"
+            [rounded]="true"
+            [outlined]="true"
+            (onClick)="onLogin()"
+          />
+        }
       </div>
     </ng-template>
   </p-menubar>

@@ -6,6 +6,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
 import { MenubarModule } from 'primeng/menubar';
 import { HeaderComponent } from './components/header/header.component';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
     AvatarModule,
     InputTextModule,
     RippleModule,
+    ButtonModule
   ],
   exports: [
     HeaderComponent

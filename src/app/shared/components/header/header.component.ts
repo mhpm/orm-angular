@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { IUser } from '../../../modules/users/types/user.interface';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class HeaderComponent implements OnInit {
   items: MenuItem[] | undefined;
+  user: IUser | undefined;
 
   ngOnInit() {
     this.items = [
@@ -65,5 +67,15 @@ export class HeaderComponent implements OnInit {
       //   badge: '3',
       // },
     ];
+  }
+
+  onLogin() {
+    this.user = {
+      avatar: 'https://avatars.githubusercontent.com/u/90282266',
+      email: 'Rickie_Lang@hotmail.com',
+      first_name: 'Walter',
+      id: '1e15',
+      last_name: 'Spinka',
+    };
   }
 }
