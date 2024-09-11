@@ -14,7 +14,7 @@ import { UserService } from '../../users.service';
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
-  styleUrl: './user-edit.component.scss',
+  styleUrl: './user-edit.component.css',
 })
 export class UserEditComponent implements OnChanges {
   @Input() user: IUser = {
@@ -48,16 +48,12 @@ export class UserEditComponent implements OnChanges {
 
   onSubmit() {
     if (this.editForm.valid) {
-      this.updateUser();
+      const updateUser: Partial<IUser> = { ...this.editForm.value };
+      this.userService.updateUser(updateUser).subscribe({
+        next: (updated) => this.onSave.emit(),
+        error: (err) => console.error('Error updating user:', err),
+      });
     }
-  }
-
-  updateUser() {
-    const updateUser: Partial<IUser> = { ...this.editForm.value };
-    this.userService.updateUser(updateUser).subscribe({
-      next: (updated) => this.onSave.emit(),
-      error: (err) => console.error('Error updating user:', err),
-    });
   }
 
   onCancel() {

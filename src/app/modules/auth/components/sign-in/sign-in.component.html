@@ -1,0 +1,71 @@
+<span class="p-text-secondary block">Update your information.</span>
+<div class="py-5">
+  <!-- <p-messages
+    *ngIf="userService.errorMessage()"
+    [value]="[{ severity: 'error', detail: userService.errorMessage() }]"
+    [enableService]="false"
+  /> -->
+  <!-- <p-progressBar
+    *ngIf="userService.loading()"
+    mode="indeterminate"
+    [style]="{ height: '6px' }"
+  /> -->
+</div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="flex flex-col gap-2 mb-5">
+    <label for="email">Name</label>
+    <input
+      pInputText
+      id="email"
+      formControlName="email"
+      aria-describedby="email-help"
+    />
+    <div
+      *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+      class="text-red-600"
+    >
+      <small *ngIf="loginForm.get('email')?.errors?.['required']">
+        Name is required.
+      </small>
+      <small *ngIf="loginForm.get('email')?.errors?.['minlength']">
+        Name must be at least 2 characters long.
+      </small>
+    </div>
+  </div>
+  <div class="flex flex-col gap-2 mb-5">
+    <label for="password">Last Name</label>
+    <input
+      pInputText
+      id="password"
+      formControlName="password"
+      aria-describedby="password-help"
+    />
+    <div
+      *ngIf="
+        loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+      "
+      class="text-red-600"
+    >
+      <small *ngIf="loginForm.get('password')?.errors?.['required']"
+        >Last Name is required.</small
+      >
+      <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+        Last Name must be at least 2 characters long.
+      </small>
+    </div>
+  </div>
+  <div class="flex justify-end gap-2 mt-4">
+    <p-button
+      label="Cancel"
+      severity="secondary"
+      (onClick)="onCancel()"
+      size="small"
+    ></p-button>
+    <p-button
+      label="Save"
+      type="submit"
+      [disabled]="loginForm.invalid"
+      size="small"
+    ></p-button>
+  </div>
+</form>

@@ -6,7 +6,7 @@ import { faker } from '@faker-js/faker';
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
-  styleUrl: './user-page.component.scss',
+  styleUrl: './user-page.component.css',
 })
 export class UserPageComponent {
   displayedColumns = [
