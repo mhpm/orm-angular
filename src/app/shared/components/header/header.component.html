@@ -112,6 +112,7 @@
           (click)="op.toggle($event)"
           [image]="user.avatar"
           shape="circle"
+          class="cursor-pointer"
         />
         } @else {
         <p-button
@@ -129,7 +130,14 @@
 </div>
 
 <p-overlayPanel #op>
-    <p-button icon="pi pi-sign-out" severity="contrast" size="small" (click)="onLogout()" label="Log out" />
+  <p-button
+    icon="pi pi-sign-out"
+    [text]="true"
+    severity="secondary"
+    size="small"
+    (click)="onLogout()"
+    label="Log out"
+  />
 </p-overlayPanel>
 
 <p-dialog
