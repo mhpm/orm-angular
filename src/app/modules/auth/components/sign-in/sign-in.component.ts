@@ -12,7 +12,7 @@ export class SignInComponent {
   @Output() onClose = new EventEmitter();
   loginForm: FormGroup;
 
-  private authService = inject(AuthService);
+  authService = inject(AuthService);
   user: IUser | undefined;
 
   constructor(private fb: FormBuilder) {
@@ -37,7 +37,6 @@ export class SignInComponent {
           },
           error: (err) => {
             console.error('Error on login:', err);
-            this.onClose.emit();
           },
         });
     }

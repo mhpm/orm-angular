@@ -24,6 +24,7 @@ export class AuthService {
   private http = inject(HttpClient);
   loading: WritableSignal<boolean> = signal(false);
   user: IUser | undefined;
+  errorMessage: WritableSignal<string> = signal('');
 
   constructor() {
     // Optionally, initialize authentication status from storage
@@ -95,6 +96,7 @@ export class AuthService {
   private handleError(error: HttpErrorResponse) {
     console.error('Error:', error);
     this.loading.set(false);
+    this.errorMessage.set(error.error.error);
     return throwError(() => new Error('An error occurred.'));
   }
 }

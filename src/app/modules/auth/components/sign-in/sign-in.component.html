@@ -1,15 +1,13 @@
-<div class="py-5">
-  <!-- <p-messages
-    *ngIf="userService.errorMessage()"
-    [value]="[{ severity: 'error', detail: userService.errorMessage() }]"
-    [enableService]="false"
-  /> -->
-  <!-- <p-progressBar
-    *ngIf="userService.loading()"
-    mode="indeterminate"
-    [style]="{ height: '6px' }"
-  /> -->
-</div>
+<p-messages
+  *ngIf="authService.errorMessage()"
+  [value]="[{ severity: 'error', detail: authService.errorMessage() }]"
+  [enableService]="false"
+/>
+<p-progressBar
+  *ngIf="authService.loading()"
+  mode="indeterminate"
+  [style]="{ height: '6px' }"
+/>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
   <div class="flex flex-col gap-2 mb-5">
     <label for="email">E-mail:</label>
