@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { MessagesModule } from 'primeng/messages';
 import { ButtonModule } from 'primeng/button';
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
   declarations: [SignInComponent],
@@ -17,7 +18,8 @@ import { ButtonModule } from 'primeng/button';
     ReactiveFormsModule,
     ProgressBarModule,
     MessagesModule,
-    ButtonModule
+    ButtonModule,
+    PasswordModule
   ],
   exports: [SignInComponent],
 })

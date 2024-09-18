@@ -105,23 +105,30 @@
     </ng-template>
     <ng-template pTemplate="end">
       <div class="flex items-center gap-2 justify-center">
-        @if(user){
-          <strong>Welcome:</strong><span>{{user.first_name}} {{user.last_name}}</span>
-          <p-avatar
-            [image]="user.avatar"
-            shape="circle"
-          />
+        @if(authService.user){
+        <strong>Welcome:</strong
+        ><span>{{ authService.user.first_name }} {{ authService.user.last_name }}</span>
+        <p-avatar [image]="authService.user.avatar" shape="circle" />
         } @else {
-          <p-button
-            severity="secondary"
-            label="Login"
-            size="small"
-            [rounded]="true"
-            [outlined]="true"
-            (onClick)="onLogin()"
-          />
+        <p-button
+          severity="secondary"
+          label="Login"
+          size="small"
+          [rounded]="true"
+          [outlined]="true"
+          (onClick)="onLogin()"
+        />
         }
       </div>
     </ng-template>
   </p-menubar>
 </div>
+
+<p-dialog
+  header="Login User"
+  [modal]="true"
+  [(visible)]="isLoginFormVisible"
+  [style]="{ width: '25rem' }"
+>
+  <app-sign-in (onClose)="this.isLoginFormVisible = false"></app-sign-in>
+</p-dialog>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { IUser } from '../../../modules/users/types/user.interface';
+import { AuthService } from '../../../modules/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,9 @@ import { IUser } from '../../../modules/users/types/user.interface';
 export class HeaderComponent implements OnInit {
   items: MenuItem[] | undefined;
   user: IUser | undefined;
+  isLoginFormVisible = false;
+
+  authService = inject(AuthService);
 
   ngOnInit() {
     this.items = [
@@ -70,12 +74,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogin() {
-    this.user = {
-      avatar: 'https://avatars.githubusercontent.com/u/90282266',
-      email: 'Rickie_Lang@hotmail.com',
-      first_name: 'Walter',
-      id: '1e15',
-      last_name: 'Spinka',
-    };
+    this.isLoginFormVisible = true;
   }
 }

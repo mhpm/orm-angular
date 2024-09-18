@@ -18,17 +18,17 @@
   </div>
 </div>
 
-<div class="card flex justify-center">
-  <p-dialog
-    header="Edit Profile"
-    [modal]="true"
-    [(visible)]="isEditFormVisible"
-    [style]="{ width: '25rem' }"
-  >
-    <app-user-edit
-      [user]="selectedUser"
-      (onSave)="loadUsers()"
-      (onClose)="isEditFormVisible = false"
-    ></app-user-edit>
-  </p-dialog>
-</div>
+
+<p-dialog
+  header="Edit Profile"
+  [modal]="true"
+  [(visible)]="isEditFormVisible"
+  [style]="{ width: '25rem' }"
+>
+  <app-user-edit
+    [user]="selectedUser"
+    (onSave)="loadUsers()"
+    (onClose)="isEditFormVisible = false"
+  ></app-user-edit>
+</p-dialog>
+
