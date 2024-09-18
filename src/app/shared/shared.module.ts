@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { AuthModule } from '../modules/auth/auth.module';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AuthModule } from '../modules/auth/auth.module';
     ButtonModule,
     DialogModule,
     AuthModule,
+    OverlayPanelModule
   ],
   exports: [
     HeaderComponent

@@ -105,10 +105,14 @@
     </ng-template>
     <ng-template pTemplate="end">
       <div class="flex items-center gap-2 justify-center">
-        @if(authService.user){
+        @if(user){
         <strong>Welcome:</strong
-        ><span>{{ authService.user.first_name }} {{ authService.user.last_name }}</span>
-        <p-avatar [image]="authService.user.avatar" shape="circle" />
+        ><span>{{ user.first_name }} {{ user.last_name }}</span>
+        <p-avatar
+          (click)="op.toggle($event)"
+          [image]="user.avatar"
+          shape="circle"
+        />
         } @else {
         <p-button
           severity="secondary"
@@ -123,6 +127,10 @@
     </ng-template>
   </p-menubar>
 </div>
+
+<p-overlayPanel #op>
+    <p-button icon="pi pi-sign-out" severity="contrast" size="small" (click)="onLogout()" label="Log out" />
+</p-overlayPanel>
 
 <p-dialog
   header="Login User"

@@ -32,6 +32,7 @@ export class SignInComponent {
           next: (data: any) => {
             this.user = { ...data.user };
             this.authService.user = {...data.user}
+            localStorage.setItem('token', data.token);
             this.onClose.emit();
           },
           error: (err) => {
