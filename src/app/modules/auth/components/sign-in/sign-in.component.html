@@ -32,12 +32,15 @@
   </div>
   <div class="flex flex-col gap-2 mb-5">
     <label for="password">Password</label>
-    <input
-      pInputText
+    <p-password
       id="password"
       type="password"
       formControlName="password"
       aria-describedby="password-help"
+      [toggleMask]="true"
+      [feedback]="false"
+      [ngStyle]="{'width': '100%'}"
+      [inputStyle]="{'width': '100%'}"
     />
     <div
       *ngIf="

@@ -33,7 +33,7 @@ export class SignInComponent {
             this.user = { ...data.user };
             this.authService.user = {...data.user}
             localStorage.setItem('token', data.token);
-            this.onClose.emit();
+            this.onCancel();
           },
           error: (err) => {
             console.error('Error on login:', err);
