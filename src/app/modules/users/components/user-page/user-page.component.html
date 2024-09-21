@@ -1,14 +1,8 @@
-<h2 class="text-center">USERS PAGE</h2>
-
 <div class="flex justify-center">
   <div class="w-full lg:w-3/4">
-    <div class="flex justify-end pb-4 w-full">
-      <p-button
-        label="Add User"
-        (onClick)="addUser()"
-        size="small"
-        [rounded]="true"
-      />
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="">Users Page</h2>
+      <p-button label="Add User" (onClick)="addUser()" [rounded]="true" size="small"></p-button>
     </div>
     <app-user-list
       [dataSource]="dataSource"
@@ -17,7 +11,6 @@
     />
   </div>
 </div>
-
 
 <p-dialog
   header="Edit Profile"
@@ -31,4 +24,3 @@
     (onClose)="isEditFormVisible = false"
   ></app-user-edit>
 </p-dialog>
-

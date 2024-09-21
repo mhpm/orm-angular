@@ -3,6 +3,7 @@ import { MenuItem } from 'primeng/api';
 import { IUser } from '../../../modules/users/types/user.interface';
 import { AuthService } from '../../../modules/auth/auth.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +19,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
 
   authService = inject(AuthService);
+  router = inject(Router);
 
   ngOnInit() {
     this.authSubscription = this.authService.userStatus$.subscribe(
@@ -25,13 +27,27 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.isLoggedIn = isLoggedIn;
         this.items = [
           {
+            label: 'Home',
+            icon: 'pi pi-home',
+            command: () => {
+              this.router.navigate(['/']);
+            },
+          },
+          {
             label: 'Users',
             icon: 'pi pi-users',
+            command: () => {
+              this.router.navigate(['/users']);
+            },
           },
           {
             label: 'Posts',
             icon: 'pi pi-instagram',
+            routerLink: 'posts',
             visible: isLoggedIn,
+            command: () => {
+              this.router.navigate(['/posts']);
+            },
           },
         ];
       }
@@ -45,8 +61,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isLoginFormVisible = true;
   }
 
-  onLogout(){
-    this.authService.logout()
+  onLogout() {
+    this.authService.logout();
   }
 
   ngOnDestroy() {

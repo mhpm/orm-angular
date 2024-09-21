@@ -6,6 +6,7 @@
       <th class="border-b-2 bg-transparent">Name</th>
       <th class="border-b-2 bg-transparent">Last</th>
       <th class="border-b-2 bg-transparent">Email</th>
+      <th class="border-b-2 bg-transparent">Role</th>
       <th class="border-b-2 bg-transparent"></th>
       <th class="border-b-2 bg-transparent"></th>
     </tr>
@@ -19,6 +20,13 @@
       <td>{{ user.first_name }}</td>
       <td>{{ user.last_name }}</td>
       <td>{{ user.email }}</td>
+      <td>
+        @if(user.role === 'admin'){
+          <p-tag [value]="user.role" />
+        }@else {
+          <p-tag severity="secondary" [value]="user.role" />
+        }
+      </td>
       <td class="text-right">
         <p-button
           (click)="onEdit(user)"

@@ -42,6 +42,7 @@ export class UserPageComponent {
       last_name: faker.person.lastName(),
       email: faker.internet.email(),
       avatar: faker.image.avatarGitHub(),
+      role: 'user',
       password: 'changeme'
     };
 

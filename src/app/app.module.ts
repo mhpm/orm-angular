@@ -9,16 +9,21 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { PostsPageComponent } from './modules/posts/components/posts-page/posts-page.component';
+import { PostsModule } from './modules/posts/posts.module';
+import { HomeModule } from './modules/home/home.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     UsersModule,
+    PostsModule,
+    HomeModule,
     SharedModule
   ],
   providers: [

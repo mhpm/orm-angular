@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { MessagesModule } from 'primeng/messages';
+import { TagModule } from 'primeng/tag';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MessagesModule } from 'primeng/messages';
     FormsModule,
     ReactiveFormsModule,
     ProgressBarModule,
-    MessagesModule
+    MessagesModule,
+    TagModule
   ],
   exports: [
     UserPageComponent

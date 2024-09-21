@@ -29,4 +29,9 @@ export class UserListComponent {
   onDelete(user:IUser){
     this.onClickDelete.emit(user);
   }
+
+  getSeverity(role: string): string {
+    return role === 'admin' ? 'secondary' : '';
+  }
+
 }
