@@ -18,7 +18,7 @@ export class AuthService {
   currentUser$: Observable<IUser | undefined>;
 
   // For role management (e.g., admin)
-  private isAdminUser = false;
+  isAdminUser = false;
 
   private apiUrl = 'http://127.0.0.1:5001/';
   private http = inject(HttpClient);
@@ -27,7 +27,6 @@ export class AuthService {
   errorMessage: WritableSignal<string> = signal('');
 
   constructor() {
-    // Optionally, initialize authentication status from storage
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     this.userStatusSubject.next(isLoggedIn);
 
@@ -35,7 +34,6 @@ export class AuthService {
     this.currentUserSubject = new BehaviorSubject<IUser | undefined>(userData);
     this.currentUser$ = this.currentUserSubject.asObservable();
 
-    // Initialize admin status
     this.isAdminUser = localStorage.getItem('isAdmin') === 'true';
   }
 
@@ -48,14 +46,14 @@ export class AuthService {
         localStorage.setItem('isLoggedIn', 'true');
         this.currentUserSubject.next(data.user);
         localStorage.setItem('currentUser', JSON.stringify(data.user));
-        // Set admin status based on username
-        // if (username === 'admin') {
-        //   this.isAdminUser = true;
-        //   localStorage.setItem('isAdmin', 'true');
-        // } else {
-        //   this.isAdminUser = false;
-        //   localStorage.setItem('isAdmin', 'false');
-        // }
+
+        if (data.user.role === 'admin') {
+          this.isAdminUser = true;
+          localStorage.setItem('isAdmin', 'true');
+        } else {
+          this.isAdminUser = false;
+          localStorage.setItem('isAdmin', 'false');
+        }
       }),
       catchError((error) => this.handleError(error))
     );

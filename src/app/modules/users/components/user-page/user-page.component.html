@@ -2,7 +2,12 @@
   <div class="w-full lg:w-3/4">
     <div class="flex justify-between items-center mb-6">
       <h2 class="">Users Page</h2>
-      <p-button label="Add User" (onClick)="addUser()" [rounded]="true" size="small"></p-button>
+      <p-button
+        label="Add User"
+        (onClick)="addUser()"
+        [rounded]="true"
+        size="small"
+      ></p-button>
     </div>
     <app-user-list
       [dataSource]="dataSource"

@@ -1,7 +1,11 @@
 <div class="card">
   <p-menubar [model]="items">
     <ng-template pTemplate="item" let-item let-root="root">
-      <a pRipple [routerLink]="item.route" class="flex items-center p-menuitem-link">
+      <a
+        pRipple
+        [routerLink]="item.route"
+        class="flex items-center p-menuitem-link"
+      >
         <span [class]="item.icon"></span>
         <span class="ml-2">{{ item.label }}</span>
         <p-badge
@@ -26,14 +30,14 @@
     <ng-template pTemplate="end">
       <div class="flex items-center gap-2 justify-center">
         @if(user){
-        <strong>Welcome:</strong
-        ><span>{{ user.first_name }} {{ user.last_name }}</span>
-        <p-avatar
-          (click)="op.toggle($event)"
-          [image]="user.avatar"
-          shape="circle"
-          class="cursor-pointer"
-        />
+          <strong>Welcome:</strong><span>
+          {{ user.first_name }} {{ user.last_name }}</span>
+          <p-avatar
+            (click)="op.toggle($event)"
+            [image]="user.avatar"
+            shape="circle"
+            class="cursor-pointer"
+          />
         } @else {
         <p-button
           severity="secondary"
