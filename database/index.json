@@ -1,95 +1,76 @@
 {
   "users": [
     {
-      "id": "6fce",
-      "first_name": "Gabrielle",
-      "last_name": "Gulgowski",
-      "email": "Randy.Skiles@yahoo.com",
-      "avatar": "https://avatars.githubusercontent.com/u/6383737"
+      "id": "e116",
+      "first_name": "Cade",
+      "last_name": "Ondricka",
+      "email": "Treva_Bartell91@hotmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/26377171",
+      "role": "user",
+      "password": "changeme"
     },
     {
-      "id": "e0f6",
-      "first_name": "Jean",
-      "last_name": "Ortiz",
-      "email": "Lea.Nitzsche@gmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/25288823"
+      "id": "a55a",
+      "first_name": "Javonte",
+      "last_name": "Zieme",
+      "email": "Horacio.Roberts@hotmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/17197665",
+      "role": "user",
+      "password": "changeme"
     },
     {
-      "id": "273f",
-      "first_name": "Reinhold",
-      "last_name": "Nikolaus",
-      "email": "Aletha_Will@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/17831674"
+      "id": "fa15",
+      "first_name": "Izabella",
+      "last_name": "Rowe",
+      "email": "Cleveland_Friesen93@yahoo.com",
+      "avatar": "https://avatars.githubusercontent.com/u/17380819",
+      "role": "user",
+      "password": "changeme"
     },
     {
-      "id": "dda2",
-      "first_name": "Violette",
-      "last_name": "Graham",
-      "email": "Rogers_Hilll19@yahoo.com",
-      "avatar": "https://avatars.githubusercontent.com/u/58092509"
+      "id": "0e0a",
+      "first_name": "Norwood",
+      "last_name": "Rath",
+      "email": "Monica_Ankunding-Jones7@yahoo.com",
+      "avatar": "https://avatars.githubusercontent.com/u/64075075",
+      "role": "admin",
+      "password": "changeme"
     },
     {
-      "id": "7223",
-      "first_name": "Lysanne",
-      "last_name": "Braun",
-      "email": "Kayden42@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/30689335"
+      "id": "7cfb",
+      "first_name": "Julianne",
+      "last_name": "Wilderman",
+      "email": "Russ_Barton27@yahoo.com",
+      "avatar": "https://avatars.githubusercontent.com/u/60881453",
+      "role": "admin",
+      "password": "changeme"
     },
     {
-      "id": "1e15",
-      "first_name": "Walter",
-      "last_name": "Spinka",
-      "email": "Rickie_Lang@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/90282266"
+      "id": "84a4",
+      "first_name": "Terence",
+      "last_name": "Bosco",
+      "email": "Clementine_Schumm@hotmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/38575429",
+      "role": "admin",
+      "password": "changeme"
     },
     {
-      "id": "8393",
-      "first_name": "Aliyah",
-      "last_name": "Beahan",
-      "email": "Josiane.Rempel@gmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/42498629"
+      "id": "83f6",
+      "first_name": "Rick",
+      "last_name": "Hauck",
+      "email": "Nathaniel37@hotmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/64750010",
+      "role": "admin",
+      "password": "changeme"
     },
     {
-      "id": "fb2d",
-      "first_name": "Noemy",
-      "last_name": "Heidenreich",
-      "email": "Arvid89@gmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/75270330"
-    },
-    {
-      "id": "4e27",
-      "first_name": "Leatha",
-      "last_name": "Gibson",
-      "email": "Kaylie_Miller39@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/20462778"
-    },
-    {
-      "id": "c5c2",
-      "first_name": "Alanna",
-      "last_name": "Hamill",
-      "email": "Ethan_Glover@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/771194"
-    },
-    {
-      "id": "fbe1",
-      "first_name": "Cleo",
-      "last_name": "Schamberger",
-      "email": "Cheyanne6@gmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/87275289"
-    },
-    {
-      "id": "d05e",
-      "first_name": "America",
-      "last_name": "Schulist",
-      "email": "Beverly24@yahoo.com",
-      "avatar": "https://avatars.githubusercontent.com/u/48345637"
-    },
-    {
-      "id": "e46a",
-      "first_name": "Rudy",
-      "last_name": "Harber",
-      "email": "Juana_Abernathy92@gmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/9619221"
+      "id": "3144",
+      "first_name": "Flavio",
+      "last_name": "Erdman-Hills",
+      "email": "Olin_Hills@gmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/35811721",
+      "role": "admin",
+      "password": "changeme"
     }
   ],
   "news": [

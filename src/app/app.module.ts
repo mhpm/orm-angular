@@ -7,16 +7,14 @@ import { AppComponent } from './app.component';
 import { UsersModule } from './modules/users/users.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './auth.interceptor';
+import { AuthInterceptor } from './shared/auth.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { PostsPageComponent } from './modules/posts/components/posts-page/posts-page.component';
 import { PostsModule } from './modules/posts/posts.module';
 import { HomeModule } from './modules/home/home.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -24,12 +22,12 @@ import { HomeModule } from './modules/home/home.module';
     UsersModule,
     PostsModule,
     HomeModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     provideAnimationsAsync(),
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -4,10 +4,13 @@
       <h2 class="">Users Page</h2>
       <p-button
         label="Add User"
-        (onClick)="addUser()"
-        [rounded]="true"
+        icon="pi pi-user"
         size="small"
-      ></p-button>
+        [rounded]="true"
+        [loading]="isLoading"
+        (onClick)="addUser()"
+      >
+      </p-button>
     </div>
     <app-user-list
       [dataSource]="dataSource"

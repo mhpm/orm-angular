@@ -21,6 +21,7 @@ export class UserPageComponent {
   dataSource: IUser[] = [];
   isEditFormVisible: boolean = false;
   selectedUser: IUser = { id: '', first_name: '', last_name: '', email: '' };
+  isLoading = false;
 
   private userService = inject(UserService);
 
@@ -32,25 +33,31 @@ export class UserPageComponent {
     this.isEditFormVisible = false;
     this.userService.fetchUsers().subscribe({
       next: (users) => (this.dataSource = users),
+      complete: () => console.log('completed'),
       error: (err) => console.error('Error fetching users:', err),
     });
   }
 
   addUser() {
+    this.isLoading = true;
     const newUser: IUser = {
       first_name: faker.person.firstName(),
       last_name: faker.person.lastName(),
       email: faker.internet.email(),
       avatar: faker.image.avatarGitHub(),
-      role: 'user',
-      password: 'changeme'
+      role: 'admin',
+      password: 'changeme',
     };
 
     this.userService.createUser(newUser).subscribe({
       next: (user) => {
         this.loadUsers();
       },
-      error: (err) => console.error('Error creating user:', err),
+      complete: () => (this.isLoading = false),
+      error: (err) => {
+        console.error('Error creating user:', err);
+        this.isLoading = true;
+      },
     });
   }
 

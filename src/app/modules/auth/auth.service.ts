@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, tap, throwError, BehaviorSubject, Observable } from 'rxjs';
 import { IUser } from '../users/types/user.interface';
 
@@ -20,8 +21,9 @@ export class AuthService {
   // For role management (e.g., admin)
   isAdminUser = false;
 
-  private apiUrl = 'http://127.0.0.1:5001/';
+  private apiUrl = 'https://orm-flask-python-api.onrender.com';
   private http = inject(HttpClient);
+  private router = inject(Router);
   loading: WritableSignal<boolean> = signal(false);
   user: IUser | undefined;
   errorMessage: WritableSignal<string> = signal('');
@@ -42,17 +44,21 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, { email, password }).pipe(
       tap((data: any) => {
         this.loading.set(false);
+
         this.userStatusSubject.next(true);
         localStorage.setItem('isLoggedIn', 'true');
+
         this.currentUserSubject.next(data.user);
         localStorage.setItem('currentUser', JSON.stringify(data.user));
 
         if (data.user.role === 'admin') {
           this.isAdminUser = true;
           localStorage.setItem('isAdmin', 'true');
+          this.router.navigate(['/users']);
         } else {
           this.isAdminUser = false;
           localStorage.setItem('isAdmin', 'false');
+          this.router.navigate(['/news']);
         }
       }),
       catchError((error) => this.handleError(error))
@@ -74,6 +80,8 @@ export class AuthService {
     localStorage.removeItem('currentUser');
 
     localStorage.removeItem('token');
+
+    this.router.navigate(['/']);
   }
 
   // Check if user is logged in
